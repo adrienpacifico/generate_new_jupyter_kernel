@@ -10,8 +10,8 @@ nameargv = sys.argv[1:]
 command = "conda"
 python_argument=""
 
-opts,argv = getopt.getopt(nameargv, "n:prm", ["name =", "python-version =", "requirements","mamba"])
-
+opts,argv = getopt.getopt(nameargv, "n:p:rm", ["name =", "python-version=", "requirements","mamba"])
+print(opts)
 requirements_txt = False
 for o,v in opts:
     if o in ['-n','--name']:
@@ -34,7 +34,7 @@ for o,v in opts:
 
         
 #subprocess.run(f'conda create --yes -n {conda_env_name} python=3.7 ipykernel', shell=True)
-subprocess.run(f'{command} create --yes -n {conda_env_name} {python_argument} ipykernel', shell=True, check=True)
+subprocess.run(f'{command} create --yes -n {conda_env_name} {python_argument}', shell=True, check=True)
 if requirements_txt:
     subprocess.run(f'{command} run -n {conda_env_name} pip install -r {requirements_txt_path}', shell=True, check=True)
     

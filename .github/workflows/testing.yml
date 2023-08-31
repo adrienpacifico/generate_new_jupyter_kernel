@@ -19,6 +19,7 @@ jobs:
         shell: bash -el {0}
         run: |
             conda install -c conda-forge jupyterlab
+            conda install -n base --override-channels -c conda-forge mamba 'python_abi=*=*cp*'
             conda install pytest
             ls -al
             pytest
